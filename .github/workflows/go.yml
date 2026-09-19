@@ -1,0 +1,21 @@
+
+  name: Go CI
+
+  on:
+    push:
+    pull_request:
+
+  permissions:
+    contents: read
+
+  jobs:
+    build-and-test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Get the code
+          uses: actions/checkout@v7
+            go-version-file: go.mod
+
+        - name: Build
+          run: go build ./...
+          run: go test ./...
